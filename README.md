@@ -6,3 +6,5 @@ This repository describes hands-on labs for Pivotal GemFire.
 A basic knowledge of Java and familiarity with an IDE.
 
 ### Lab 1
+
+### Lab 2
