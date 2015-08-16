@@ -1,4 +1,4 @@
-# gemfire-workshop
+# Lab 1
 
 This repository describes hands-on labs for Pivotal GemFire.
 
