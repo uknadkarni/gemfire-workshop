@@ -36,15 +36,27 @@ If you want more detailed version information such as the date of the build, bui
 
 
 #### Introduction to some terms
+##### GemFire distributed system
+JVMs running GemFire form a distributed system. Each JVM is a GemFire peer member in the distributed system. A peer member connects to a GemFire distributed system and shares data with other peer members through data regions that are configured to
+distribute events among themselves.
+To start a GemFire peer, you create a GemFire cache in each member. The cache manages the connectivity to other GemFire peers. Peers discover each other through multicast messaging or a TCP locator service.
+
+##### Regions
+Regions are an abstraction on top of the distributed system. A region lets you store data in many JVMs in the system without regard to which peer's memory the data is stored in. Regions give you a map interface that transparently fetches your data from the appropriate cache. The Region class extends the java.util.Map interface, but it also supports querying and transactions.
+
+##### Locator
+The locator is a Pivotal GemFire process that tells new, connecting members where running members are located and provides load balancing for server use.
+You can run locators as peer locators, server locators, or both:
+Peer locators give joining members connection information to members already running in the locator's distributed system.
+Server locators give clients connection information to servers running in the locator's distributed system. Server locators also monitor server load and send clients to the least-loaded servers.
+By default, locators run as peer and server locators.
+You can run the locator standalone or embedded within another GemFire process. Running your locators standalone provides the highest reliability and availability of the locator service as a whole.
+
+
 ##### gfsh
-
 gfsh: Pivotal GemFire gfsh (pronounced "gee-fish") provides a single, powerful command-line interface from which you can launch, manage, and monitor Pivotal GemFire processes, data, and applications.
-
 ###### Starting gfsh
 Before you start gfsh, confirm that you have set the ``` GEMFIRE ``` and either the ``` GF_JAVA ``` or ``` JAVA_HOME ``` environment variables to the proper locations for your deployment, or that your ``` PATH ``` variable includes the java executable.
-
 At the command prompt type ``` gfsh ```. The GFSH banner is displayed and the ``` gfsh ``` command prompt appears.
-
 The gfsh utility provides useful features for a shell environment, including command auto-complete, preserved command history, and delimiting of multi-line commands. Context-sensitive help is available by command and by topic.
-
 To view a list of available ``` gfsh ``` commands, press Tab at an empty prompt.
