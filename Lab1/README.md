@@ -52,6 +52,48 @@ Server locators give clients connection information to servers running in the lo
 By default, locators run as peer and server locators.
 You can run the locator standalone or embedded within another GemFire process. Running your locators standalone provides the highest reliability and availability of the locator service as a whole.
 
+###### Start the Locator
+Use the following guidelines to start the locator:
+
+Standalone locator.
+Use the gfsh command-line utility. See Using the Pivotal GemFire SHell (gfsh) for more information on using gfsh. The syntax for starting the
+Example commands:
+```
+gfsh>start locator --name=locator1
+gfsh> start locator --name=locator2 --bind-address=192.168.129.205 --port=13489
+```
+###### Check Locator Status
+If you are connected to the distributed system in gfsh, you can check the status of a running Locator by providing the Locator name. For example:
+``` 
+gfsh>status locator --name=locator1 
+```
+
+If you are not connected to a distributed system, you can check the status of a local Locator by providing the process ID, the Locator's hostname and port, or the Locator's current working directory. For example:
+``` 
+gfsh>status locator --pid=2986 
+```
+or
+``` 
+gfsh>status locator --host=host1 --port=1035 
+```
+or
+``` 
+$ gfsh status locator --dir=<locator_working_directory> 
+```
+###### Stop the Locator
+If you are connected to the distributed system in gfsh, you can stop a running locator by providing the locator name. For example:
+``` 
+gfsh>stop locator --name=locator1 
+```
+If you are not connected to a distributed system, you can stop a local locator by specifying the locator's process ID or the locator's current working directory. For example:
+``` 
+gfsh>stop locator --pid=2986 
+```
+or
+``` 
+gfsh>stop locator --dir=<locator_working_directory> 
+```
+where <locator_working_directory> corresponds to the local working directory where the locator is running.
 
 ##### gfsh
 gfsh: Pivotal GemFire gfsh (pronounced "gee-fish") provides a single, powerful command-line interface from which you can launch, manage, and monitor Pivotal GemFire processes, data, and applications.
