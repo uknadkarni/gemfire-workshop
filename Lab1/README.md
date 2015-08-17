@@ -1,5 +1,7 @@
 # Lab 1
 
+## 20 minutes
+
 This repository describes hands-on labs for Pivotal GemFire.
 
 ### Prerequisites
