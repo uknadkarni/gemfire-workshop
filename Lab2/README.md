@@ -264,11 +264,12 @@ In this step you restart the cache servers in parallel. Because the data is pers
 Start server1. Because regionA is replicated and persistent, it needs data from the other server to start and waits for the server to start:
 ```
 gfsh>start server --name=server1 --server-port=40411
-```
 Starting a GemFire Server in /home/username/my_gemfire/server1...
 ............................................................................
 ............................................................................
+```
 Note that if you look in the server1.log file for the restarted server, you will see a log message similar to the following:
+```
 [info 2015/01/14 09:08:13.610 PST server1 <main> tid=0x1] Region /regionA has pot
 entially stale data. It is waiting for another member to recover the latest data.
   My persistent id:
@@ -285,6 +286,7 @@ entially stale data. It is waiting for another member to recover the latest data
   ]
   Use the "gemfire list-missing-disk-stores" command to see all disk stores that 
 are being waited on by other members.
+```
 In a second terminal window, change directories to the scratch working directory (for example, my_gemfire) and start gfsh:
 ```
 [username@localhost ~/my_gemfire]$ gfsh
