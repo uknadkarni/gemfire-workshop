@@ -3,6 +3,17 @@
 ### Prerequisites
 * Completion of Lab1
 
+### Agenda
+In this Lab, you will learn the following:
+* Use gfsh to start a Locator
+* Start GemFire Pulse -- a browerser-based monitoring tool for GemFire
+* Start a GemFire server
+* Create a replicated, persistent region
+* Manipulate data in the region and demonstrate persistence
+* Examine the effects of replication
+* Restart the cache servers in parallel
+* Shut down the system including your locators
+
 ##### Use gfsh to start a Locator.
 In a terminal window, use the gfsh command line interface to start up a locator. Pivotal GemFire gfsh (pronounced "gee-fish") provides a single, intuitive command-line interface from which you can launch, manage, and monitor Pivotal GemFire processes, data, and applications.
 
