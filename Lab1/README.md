@@ -3,6 +3,7 @@
 This repository describes hands-on labs for Pivotal GemFire.
 
 ### Prerequisites
+* Administrative privileges to your laptop
 * A basic knowledge of Java and familiarity with an IDE.
 * These lab setup and examples have been written on a Linux-based OS -- Ubuntu.
 * Confirm that your system meets the hardware and software requirements described in Pivotal GemFire Supported Configurations.
