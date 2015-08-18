@@ -4,6 +4,7 @@ In this module we will programmatically add (retrieve) user-defined data to (fro
 
 We will use Spring Boot to build this application.
 Go to ```https://start.spring.io``` and fill out the Project Metadata form with the following values
+
 | Metadata            | Value |
 |---------------------|-------|
 | Group               | com.handson.labs |
@@ -17,7 +18,7 @@ Go to ```https://start.spring.io``` and fill out the Project Metadata form with 
 | Language            | Java |
 | Spring Boot Version | 1.2.5 |
 
-Lets create a class ```Account``` to model a Bank Account. To keep things simple, let's provide three member variables to it.
+In an IDE of your choice, let's create a class ```Account``` to model a Bank Account. To keep things simple, let's provide only three member variables to it.
 ```
 class Account {
 	private String id;
@@ -25,7 +26,7 @@ class Account {
 	private double balance;
 }
 ```
-Use an IDE like Eclipse to create getter and setter methods for this class.
+Use IDE to generate getter and setter methods for this class.
 
 
 
