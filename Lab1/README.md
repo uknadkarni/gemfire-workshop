@@ -44,7 +44,17 @@ JVMs running GemFire form a distributed system. Each JVM is a GemFire peer membe
 distribute events among themselves.
 To start a GemFire peer, you create a GemFire cache in each member. The cache manages the connectivity to other GemFire peers. Peers discover each other through multicast messaging or a TCP locator service.
 
+##### Caches
+Caches are an abstraction that describe a node in a GemFire distributed system. Application architects can arrange those nodes in several deployment architectures, including:
+* peer to peer
+* client / server
+* WAN gateway topologies
+
+
 ##### Regions
+Within each cache, you define data _regions_. Data regions are analogous to tables in a relational database and manage data in a distributed fashion as name/value pairs.
+A *replicated* region stores identical copies of the data on each cache member of a distributed system.
+A *partitioned* region spreads the data among cache members.
 Regions are an abstraction on top of the distributed system. A region lets you store data in many JVMs in the system without regard to which peer's memory the data is stored in. Regions give you a map interface that transparently fetches your data from the appropriate cache. The Region class extends the java.util.Map interface, but it also supports querying and transactions.
 
 ##### Locator
