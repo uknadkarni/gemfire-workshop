@@ -51,8 +51,17 @@ Use an IDE like Eclipse to do the following:
 ## Serialization
 Classes in Gemfire can be serialized by one of the following:
 * ```java.io.Serializable```
-* ```PdxSerializable``` helps you avoid the larger costs of performing deserialization
+* ```PdxSerializable``` helps you avoid the larger costs of performing deserialization.
 * ```DataSerializable``` is about 25% faster than PDX serialization
+
+### When should one use GemFire PDX Serialization?
+* **Versioning of Application Objects** With PDX, you can use old andnew versions of domain objects together in a distributed system if the versions differ by the addition or removal of fields. This compatibility lets you gradually introduce modified code and data into the system, without bringing the system down.
+* **Portability** When you serialize an object using PDX, GemFire stores the object's type information in the central registry. The information is passed among clients and servers, peers, and distributed systems. The centralization of object type information is advantageous for client/server installations in which clients and servers are written in different languages.
+* **Reduced Deserialization of Serialized Objects** The access methods of PDX serialized objects allow you to examine specific fields of your domain object without deserializing the entier object. Depending on your object usage, you can reduce serialization and deserialization costs significantly.
+
+### When should one not use GemFire Serialization (PDX or Data Serializable)?
+GemFire serialization (either PDX serialization or data Serialization) does not support circular object graphs whereas Java serialization does. In GemFire serialization, if the same object is referenced more than once in an object graph, the object is serialized for each reference, and deserialization produces multiple copies of the object. By contrast in this situation, Java serialization serializes the object once and when deserializing the object, it produces one instance of the object with multiple references.
+
 
 
 ## Start a Locator

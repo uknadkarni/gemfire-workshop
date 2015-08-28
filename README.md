@@ -42,3 +42,5 @@ Before you begin, verify that you meet the prerequisites:
 
 ### Lab 10: Developing Rest Applications with GemFire
 
+## FAQ
+* What is a cache?
