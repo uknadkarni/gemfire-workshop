@@ -321,6 +321,7 @@ Start server2:
 gfsh>start server --name=server2 --server-port=40412
 ```
 When server2 starts, note that server1 completes its start up in the first gfsh window:
+```
 Server in /home/username/my_gemfire/server1 on ubuntu.local[40411] as server1 is currently online.
 Process ID: 3402
 Uptime: 1 minute 46 seconds
@@ -332,6 +333,7 @@ JVM Arguments: -Dgemfire.default.locators=192.168.129.145[10334] -Dgemfire.use-c
 -Djava.awt.headless=true -Dsun.rmi.dgc.server.gcInterval=9223372036854775806
 Class-Path: /home/username/Pivotal_GemFire_810_b50582_Linux/lib/gemfire.jar:
 /home/username/Pivotal_GemFire_810_b50582_Linux/lib/server-dependencies.jar
+```
 Verify that the locator and two servers are running:
 ```
 gfsh>list members

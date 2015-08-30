@@ -17,6 +17,7 @@ Before you begin, verify that you meet the prerequisites:
 * gfsh
 * locator
 * server
+* Configure GemFire using Cache XML
 
 ### Lab 2: Put (Get) primitive data types into (from) GemFire 
 * Start two GemFire servers
@@ -41,6 +42,8 @@ Before you begin, verify that you meet the prerequisites:
 ### Lab 9: Using Spring Data GemFire
 
 ### Lab 10: Developing Rest Applications with GemFire
+
+### Lab 11: Browsing GemFire MBeans through JConsole
 
 ## FAQ
 * What is a cache?

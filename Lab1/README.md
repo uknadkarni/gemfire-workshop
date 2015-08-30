@@ -115,3 +115,65 @@ Before you start gfsh, confirm that you have set the ``` GEMFIRE ``` and either 
 At the command prompt type ``` gfsh ```. The GFSH banner is displayed and the ``` gfsh ``` command prompt appears.
 The gfsh utility provides useful features for a shell environment, including command auto-complete, preserved command history, and delimiting of multi-line commands. Context-sensitive help is available by command and by topic.
 To view a list of available ``` gfsh ``` commands, press Tab at an empty prompt.
+
+## Configure GemFire using Cache XML
+The `cache.xml` can be used to configure servers, clients and WAN configurations.
+### Cache XML Requirements
+The `cache.xml` file has these requirements
+1. The contents must conform to the XML definition in `dtd/cache7_0.dtd' of your GemFire installation.
+2. The file must include a `DOCTYPE` of one of the following forms:
+* Server or peer cache
+`
+<!DOCTYPE cache PUBLIC 
+"-//GemStone Systems, Inc.//GemFire Declarative Caching 7.0//EN" 
+"http://www.gemstone.com/dtd/cache7_0.dtd">
+`
+* Client cache
+`
+<!DOCTYPE client-cache PUBLIC 
+"-//GemStone Systems, Inc.//GemFire Declarative Caching 7.0//EN" 
+"http://www.gemstone.com/dtd/cache7_0.dtd">
+`
+3. Any class name specified in the file must have a public zero-argument constructor and must implement the `com.gemstone.gemfire.cache.Declarable` instance. Parameters declared in the XML for the class are passed to the class `init` method.
+### Variables in cache.xml
+You can use variables in the cache.xml to customize your settings without modifying the XML file.
+Set your variables in Java system properties when you start your cache server or application process.
+Example cache.xml with variables and the gfsh `start server` command that sends the variables:
+`
+<!DOCTYPE cache PUBLIC
+  "-//GemStone Systems, Inc.//GemFire Declarative Caching 7.0//EN"
+  "http://www.gemstone.com/dtd/cache7_0.dtd">
+<cache>
+  <cache-server port="${PORT}" max-connections="${MAXCNXS}"/>
+  <region name="root">
+    <region-attributes refid="REPLICATE"/>
+  </region>
+</cache>
+`
+`
+gfsh>start server --name=server2 --cache-xml-file=cache.xml --J=-DPORT=30333 --J=-DMAXCNXS=77
+`
+### Configuration Quick Reference
+To configure cache servers, clients, and WAN topologies
+* Server Configuration
+** `<cache>`
+** `<cache-server>` 
+** `<region>`
+** `<region-attributes>`
+You can set the same server configuration properties using the `com.gemstone.gemfire.cache.server.CacheServer` and `com.gemstone.gemfire.cache.Cache` interfaces. 
+
+* Client Configuration
+** `<client-cache>
+** `<pool>`
+** `<region>`
+You can set the same client configuration properties using the `com.gemstone.gemfire.cache.clientClientCache` and Pool interfaces.
+
+* Multi-site (WAN) Configuration and Asynchronous Event Queue Configuration
+** `<gateway-sender>
+** `<gateway-receiver>
+** `<async-event-queue>
+The gateway sender and receiver APIs in `com.gemstone.gemfire.cache.util` provide corresponding getter and setter methods for these attributes.
+
+
+
+
